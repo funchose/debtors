@@ -36,7 +36,7 @@ public class XlsReader {
     this.sheet = workbook.getSheet("Должники");
   }
 
-  public ArrayList<Debtor> readDebtorData() {
+  public ArrayList<Debtor> readDebtorData() throws IOException {
     var debtors = new ArrayList<Debtor>();
     Iterator rowIter = sheet.rowIterator();
     XSSFRow row = (XSSFRow) rowIter.next();
@@ -48,6 +48,7 @@ public class XlsReader {
           .setDebt(Double.parseDouble(row.getCell(2).getRawValue()));
       debtors.add(debtor);
     }
+    workbook.close();
     return debtors;
   }
 }
