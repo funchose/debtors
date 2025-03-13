@@ -10,5 +10,6 @@ public class App {
     if (scanner.next().equals("1")) {
       sender.setInterrupted(true);
     }
+    scanner.close();
   }
 }
